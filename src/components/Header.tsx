@@ -48,7 +48,12 @@ const QR = styled(FaQrcode)`
 `;
 
 const LogoImage = styled.img`
-  width: 40px;
+  @media(max-width:400px){
+  width: 100px;
+}
+@media(min-width: 401px){
+  max-width: 150px;
+}
   margin-right: 4px;
 `;
 
@@ -154,7 +159,6 @@ export function Header() {
             <LogoContainer>
               <Logo onClick={() => navigate("/")}>
                 <LogoImage src="/logo.png" />
-                <LogoText>METIRL</LogoText>
               </Logo>
             </LogoContainer>
             <Left>

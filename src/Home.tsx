@@ -3,6 +3,7 @@ import styled from "styled-components";
 import GradientBar from "./components/GradientBar";
 import { useAccount } from "wagmi";
 import { useModal } from "connectkit";
+import CongratulationPopUp from './components/popup';
 import {
   baseURL,
   CUSTOM_SCHEMAS,
@@ -110,6 +111,7 @@ function Home() {
   const [ensResolvedAddress, setEnsResolvedAddress] = useState("Dakh.eth");
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const [showSuccessModal, setShowSuccessModal] = useState(false); // For modal visibility
 
   useEffect(() => {
     const addressParam = searchParams.get("address");
@@ -152,7 +154,7 @@ function Home() {
       <GradientBar />
       <WhiteBox>
         <Title>
-          I <b>attest</b> that I met
+        I <b>attest</b> that I attended B&lt;&gt;rder/ess 3.0 Physically/Virtually
         </Title>
 
         <InputContainer>
@@ -223,10 +225,8 @@ function Home() {
                   } catch (e) {
                     console.error("ens error:", e);
                   }
-
-                  setTimeout(() => {
-                    navigate(`/connections`);
-                  }, 500);
+                  setShowSuccessModal(true);
+                  setTimeout(() => setShowSuccessModal(false), 30000);
                 } else {
                   console.error(res.data.error);
                 }
@@ -252,6 +252,7 @@ function Home() {
           </>
         )}
       </WhiteBox>
+      {showSuccessModal && <CongratulationPopUp />} 
     </Container>
   );
 }
