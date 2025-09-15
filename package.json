@@ -11,7 +11,7 @@
     "@types/node": "^16.18.36",
     "@types/react": "^18.2.13",
     "@types/react-dom": "^18.2.6",
-    "axios": "^1.4.0",
+    "axios": "^1.12.0",
     "connectkit": "1.5.3",
     "dayjs": "^1.11.8",
     "ethers": "6.9.0",
